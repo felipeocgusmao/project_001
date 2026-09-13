@@ -103,8 +103,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBookingModal }) => {
               {/* Main Photo Card */}
               <div className="rounded-2xl overflow-hidden shadow-xl border border-[#E3D4C7] bg-[#EFE8DF] aspect-3/4 relative group">
                 <img
-                  src="/assets/images/maze-gusmao.jpg"
-                  alt="Maze Gusmão - Terapeuta Sistêmica e Consteladora Familiar"
+                  src="/assets/images/consultorio.jpg"
+                  alt="Consultório acolhedor preparado para atendimento terapêutico"
                   className="w-full h-full object-cover object-center group-hover:scale-102 transition-transform duration-500"
                   loading="eager"
                 />
@@ -118,8 +118,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBookingModal }) => {
                     <span className="w-2 h-2 rounded-full bg-[#82B29A]" />
                     <p className="text-xs uppercase tracking-wider font-semibold text-[#E5CEBF]">Instituto NovaHera</p>
                   </div>
-                  <h3 className="font-serif text-lg font-bold text-white">Maze Gusmão</h3>
-                  <p className="text-xs text-[#EAE2D8] font-light">Especialista em Constelação Familiar & Terapia Sistêmica</p>
+                  <h3 className="font-serif text-lg font-bold text-white">Espaço de acolhimento</h3>
+                  <p className="text-xs text-[#EAE2D8] font-light">Atendimento online e presencial com sigilo e cuidado</p>
                 </div>
               </div>
 
