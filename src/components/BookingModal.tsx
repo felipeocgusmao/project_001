@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { X, Calendar, MessageCircle, CheckCircle2, Shield, Send } from 'lucide-react';
 import { SERVICES, THERAPIST_INFO } from '../data/therapyData';
 
@@ -13,13 +13,20 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   onClose,
   defaultService
 }) => {
-  if (!isOpen) return null;
-
   const [name, setName] = useState('');
   const [whatsapp, setWhatsapp] = useState('');
   const [service, setService] = useState(defaultService || SERVICES[0].title);
   const [modality, setModality] = useState<'online' | 'presencial'>('online');
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      setService(defaultService || SERVICES[0].title);
+      setSubmitted(false);
+    }
+  }, [isOpen, defaultService]);
+
+  if (!isOpen) return null;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
