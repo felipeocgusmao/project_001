@@ -676,25 +676,32 @@
               <textarea id="formMessage" name="situation" rows="3" class="form-control" placeholder="Ex: Gostaria de constelar um padrão de relacionamentos difíceis ou desbloquear minha vida profissional..."></textarea>
             </div>
 
+            <div class="form-group form-consent">
+              <label class="consent-label" for="formConsent">
+                <input type="checkbox" id="formConsent" name="consent" required>
+                <span>Li e concordo com a <a href="privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a> e os <a href="termos.html" target="_blank" rel="noopener">Termos de Uso</a>.</span>
+              </label>
+            </div>
+
             <div class="form-actions">
               <button type="submit" class="btn btn-primary btn-lg" id="bookingSubmitBtn">
-                <svg width="16" height="16"><use href="#icon-send"/></svg> Confirmar Pré-Agendamento no Site
+                <svg width="16" height="16"><use href="#icon-send"/></svg> Revisar e Continuar
               </button>
               <button type="button" class="btn btn-sage-dark btn-lg" id="bookingWhatsAppBtn">
                 <svg width="16" height="16"><use href="#icon-chat"/></svg> Enviar Direto no WhatsApp
               </button>
             </div>
 
-            <p class="form-disclaimer"><svg width="14" height="14"><use href="#icon-shield"/></svg> Seus dados são confidenciais e protegidos pela ética profissional terapêutica.</p>
+            <p class="form-disclaimer"><svg width="14" height="14"><use href="#icon-shield"/></svg> Este site não armazena o que você digita: seus dados só chegam à Maze se você os enviar pelo WhatsApp.</p>
           </form>
 
           <div id="bookingSuccess" class="booking-success" hidden>
             <div class="booking-success-icon"><svg width="30" height="30"><use href="#icon-check-circle"/></svg></div>
-            <h3>Solicitação Recebida com Sucesso!</h3>
-            <p>Muito obrigada, <strong id="successName"></strong>. Recebemos seu interesse para <strong id="successService"></strong>.</p>
-            <p class="booking-success-sub">Entraremos em contato pelo WhatsApp <strong id="successPhone"></strong> para confirmar as datas disponíveis.</p>
+            <h3>Falta só um passo!</h3>
+            <p>Obrigada, <strong id="successName"></strong>. Seu pedido sobre <strong id="successService"></strong> está pronto, mas <strong>ainda não foi enviado</strong>: toque no botão abaixo para enviá-lo pelo WhatsApp.</p>
+            <p class="booking-success-sub">A Maze responderá para o número <strong id="successPhone"></strong> para confirmar as datas disponíveis.</p>
             <div class="booking-success-actions">
-              <button type="button" class="btn btn-sage-dark" id="successWhatsAppBtn"><svg width="16" height="16"><use href="#icon-chat"/></svg> Agilizar no WhatsApp Agora</button>
+              <button type="button" class="btn btn-sage-dark" id="successWhatsAppBtn"><svg width="16" height="16"><use href="#icon-chat"/></svg> Enviar pelo WhatsApp Agora</button>
               <button type="button" class="btn btn-ghost" id="successResetBtn">Enviar Outra Mensagem</button>
             </div>
           </div>
@@ -741,6 +748,7 @@
     <div class="container footer-bottom">
       <div class="footer-legal">
         <p>© <span id="footerYear"></span> Maze Gusmão • Instituto Nova Era. Todos os direitos reservados.</p>
+        <p class="footer-legal-links"><a href="privacidade.html">Política de Privacidade</a> <span aria-hidden="true">·</span> <a href="termos.html">Termos de Uso</a></p>
         <p class="footer-ethics">Nota ética: a constelação sistêmica é uma abordagem complementar de autoconhecimento e não substitui acompanhamento médico ou psicológico. Não são feitas promessas de cura milagrosa e as histórias de clientes não são expostas.</p>
       </div>
       <button type="button" class="back-to-top" id="backToTop">Voltar ao topo <svg width="14" height="14"><use href="#icon-arrow-up"/></svg></button>
@@ -782,8 +790,15 @@
             <select id="modalService" class="form-control"></select>
           </div>
 
+          <div class="form-group form-consent">
+            <label class="consent-label" for="modalConsent">
+              <input type="checkbox" id="modalConsent" required>
+              <span>Li e concordo com a <a href="privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a> e os <a href="termos.html" target="_blank" rel="noopener">Termos de Uso</a>.</span>
+            </label>
+          </div>
+
           <div class="modal-actions">
-            <button type="submit" class="btn btn-primary" style="width:100%;"><svg width="16" height="16"><use href="#icon-calendar"/></svg> Enviar Solicitação de Horário</button>
+            <button type="submit" class="btn btn-primary" style="width:100%;"><svg width="16" height="16"><use href="#icon-calendar"/></svg> Revisar e Continuar</button>
             <button type="button" class="btn btn-sage-dark" style="width:100%;" id="modalWhatsAppBtn"><svg width="16" height="16"><use href="#icon-chat"/></svg> Chamar no WhatsApp Imediatamente</button>
           </div>
           <p class="form-disclaimer"><svg width="13" height="13"><use href="#icon-shield"/></svg> Atendimento com sigilo e ética profissional.</p>
@@ -792,10 +807,10 @@
 
       <div id="modalSuccessWrap" class="booking-success" hidden>
         <div class="booking-success-icon"><svg width="28" height="28"><use href="#icon-check-circle"/></svg></div>
-        <h3>Solicitação Enviada!</h3>
-        <p>Obrigada pelo contato, <strong id="modalSuccessName"></strong>. Entraremos em contato pelo WhatsApp <strong id="modalSuccessPhone"></strong> para confirmar seu horário.</p>
+        <h3>Falta só um passo!</h3>
+        <p>Obrigada, <strong id="modalSuccessName"></strong>. Seu pedido ainda <strong>não foi enviado</strong>: toque no botão abaixo para enviá-lo pelo WhatsApp. A Maze responderá para o número <strong id="modalSuccessPhone"></strong> para confirmar seu horário.</p>
         <div class="booking-success-actions">
-          <button type="button" class="btn btn-sage-dark" style="width:100%;" id="modalSuccessWhatsAppBtn"><svg width="16" height="16"><use href="#icon-chat"/></svg> Conversar no WhatsApp Agora</button>
+          <button type="button" class="btn btn-sage-dark" style="width:100%;" id="modalSuccessWhatsAppBtn"><svg width="16" height="16"><use href="#icon-chat"/></svg> Enviar pelo WhatsApp Agora</button>
           <button type="button" class="btn btn-ghost" id="modalSuccessCloseBtn">Fechar Janela</button>
         </div>
       </div>

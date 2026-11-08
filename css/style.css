@@ -1,6 +1,6 @@
 /* ==========================================================================
    Maze Gusmão — Terapeuta Sistêmica & Constelação Familiar
-   HTML + CSS + JS puro — Instituto NovaHera
+   HTML + CSS + JS puro — Instituto Nova Era
    ========================================================================== */
 
 :root {
@@ -642,3 +642,34 @@ h1, h2, h3 { text-wrap: balance; }
 .differential-list li { display: flex; gap: 10px; align-items: flex-start; line-height: 1.5; }
 .differential-list svg { flex: 0 0 auto; margin-top: 3px; color: var(--accent, #845948); }
 @media (min-width: 768px) { .differential-list { grid-template-columns: 1fr 1fr; gap: 12px 24px; } }
+
+
+/* ---------- Consentimento nos formulários ---------- */
+.form-consent { margin-bottom: 18px; }
+.consent-label { display: flex; align-items: flex-start; gap: 10px; font-size: 0.78rem; line-height: 1.5; color: var(--color-text-muted); cursor: pointer; }
+.consent-label input { flex-shrink: 0; width: 18px; height: 18px; margin-top: 2px; accent-color: var(--color-accent); cursor: pointer; }
+.consent-label a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 2px; }
+
+/* ---------- Rodapé: links legais ---------- */
+.footer-legal-links { margin-top: 6px; }
+.footer-legal-links a { color: #BCABA0; text-decoration: underline; text-underline-offset: 2px; }
+.footer-legal-links a:hover { color: #fff; }
+
+/* ---------- Páginas legais (privacidade e termos) ---------- */
+.legal-header { background: var(--color-surface); border-bottom: 1px solid var(--color-border); }
+.legal-header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+.legal-back { font-size: 0.82rem; font-weight: 600; color: var(--color-accent); white-space: nowrap; }
+.legal-back:hover { color: var(--color-primary); }
+.legal-main { padding: 48px 0 72px; }
+.legal-content h1 { font-family: var(--font-serif); font-size: clamp(1.8rem, 4vw, 2.4rem); line-height: 1.2; color: var(--color-ink-strong); text-wrap: balance; }
+.legal-updated { font-size: 0.8rem; color: var(--color-text-soft); margin: 8px 0 24px; }
+.legal-content h2 { font-family: var(--font-serif); font-size: 1.2rem; color: var(--color-primary); margin: 32px 0 10px; }
+.legal-content p { margin-bottom: 12px; color: var(--color-text-main); }
+.legal-content ul { list-style: disc; padding-left: 22px; margin-bottom: 12px; display: grid; gap: 6px; }
+.legal-content a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 2px; }
+.legal-links { margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--color-border); }
+.legal-footer { background: #2B1B16; color: #BCABA0; padding: 28px 0; text-align: center; font-size: 0.75rem; }
+.legal-footer p + p { margin-top: 6px; }
+.legal-footer a { text-decoration: underline; text-underline-offset: 2px; }
+.legal-footer a:hover { color: #fff; }
+@media (max-width: 560px) { .legal-header .brand-text span { display: none; } }

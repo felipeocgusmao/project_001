@@ -397,6 +397,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('bookingWhatsAppBtn').addEventListener('click', () => {
+      if (!bookingForm.checkValidity()) { bookingForm.reportValidity(); return; }
       window.open(buildWhatsAppUrl(getBookingWhatsAppMessage()), '_blank');
     });
 
@@ -473,6 +474,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('modalWhatsAppBtn').addEventListener('click', () => {
+      if (!modalForm.checkValidity()) { modalForm.reportValidity(); return; }
       window.open(buildWhatsAppUrl(getModalWhatsAppMessage()), '_blank');
       closeBookingModal();
     });
