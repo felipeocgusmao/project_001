@@ -1,25 +1,807 @@
-<!doctype html>
-<html lang="pt-BR" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Maze Gusmão | Terapeuta Sistêmica & Constelação Familiar</title>
-    <meta name="description" content="Atendimento acolhedor e transformador online e presencial. Constelação Familiar, Terapia Sistêmica, cura de raízes ancestrais e restauração de relacionamentos." />
-    <meta property="og:title" content="Maze Gusmão | Terapeuta Sistêmica & Constelação Familiar" />
-    <meta property="og:description" content="Acolher, curar e transformar. Restaure relacionamentos, desbloqueie a prosperidade e viva com leveza." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="/assets/images/consultorio.jpg" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="theme-color" content="#845948" />
-    
-    <!-- Google Fonts: Playfair Display (Serif Elegante) & Plus Jakarta Sans (Moderna e Legível) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
-  </head>
-  <body class="bg-[#FAF7F2] text-[#2D2421] font-sans antialiased selection:bg-[#E2D2C7] selection:text-[#4A2F24]">
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maze Gusmão | Terapeuta Sistêmica &amp; Constelação Familiar</title>
+  <meta name="description" content="Terapeuta sistêmica e consteladora multidimensional, formada pelo Instituto Nova Era. Atendimento online com método, condução segura e sigilo.">
 
+  <!-- Open Graph -->
+  <meta property="og:title" content="Maze Gusmão | Terapeuta Sistêmica & Constelação Familiar">
+  <meta property="og:description" content="Atuação na raiz do problema: método, condução segura e aplicação direta na vida real.">
+  <meta property="og:image" content="assets/images/maze-gusmao.jpg">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#845948">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===================== ÍCONES (sprite SVG reutilizável) ===================== -->
+  <svg style="display:none" aria-hidden="true">
+    <symbol id="icon-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m8.5 12.3 2.4 2.4 4.6-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="16" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 3v4M16 3v4M3.5 10h17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="icon-chat" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 1 3.4 6.5L4 20l1.3-3.6A7.9 7.9 0 0 1 4 12Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-shield" viewBox="0 0 24 24"><path d="M12 3.5 5 6v6c0 4.6 3 7.7 7 8.5 4-.8 7-3.9 7-8.5V6Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-9.8-9C.6 8 2 4.5 5.6 4c2-.3 3.7.6 4.9 2.4l1.5 2.2 1.5-2.2C14.7 4.6 16.4 3.7 18.4 4c3.6.5 5 4 3.4 7.5-2.3 4.4-9.8 9-9.8 9Z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="icon-sparkles" viewBox="0 0 24 24"><path d="M11 3.5 12.6 8l4.4 1.6-4.4 1.6L11 15.7 9.4 11.2 5 9.6l4.4-1.6ZM18.5 15l.9 2.3 2.3.9-2.3.9-.9 2.3-.9-2.3-2.3-.9 2.3-.9Z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="icon-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m8.5 13.3-1.7 6.7 5.2-2.6 5.2 2.6-1.7-6.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v2.6M12 18.9v2.6M4.6 4.6l1.9 1.9M17.5 17.5l1.9 1.9M2.5 12h2.6M18.9 12h2.6M4.6 19.4l1.9-1.9M17.5 6.5l1.9-1.9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="icon-tree" viewBox="0 0 24 24"><path d="M12 3 7 10h3l-4 6h5v5h2v-5h5l-4-6h3Z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="icon-droplet" viewBox="0 0 24 24"><path d="M12 3.5c3 4 6 7.2 6 10.6a6 6 0 0 1-12 0c0-3.4 3-6.6 6-10.6Z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="icon-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5v6M12 16.7v.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="icon-users" viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M2.8 19.5c.8-3.3 3.2-5 6.2-5s5.4 1.7 6.2 5M15.5 6.2a3.2 3.2 0 0 1 0 6.2M21.2 19c-.5-2.1-1.7-3.6-3.5-4.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="icon-trend-down" viewBox="0 0 24 24"><path d="M3 6.5 10 14l4-4 7 8M16 18h5v-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-battery" viewBox="0 0 24 24"><rect x="2.5" y="8" width="15" height="8" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M19.5 10.5v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M9 9.5 7 13h2.4l-1.2 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9.3 9.3a2.7 2.7 0 1 1 3.9 2.4c-.9.5-1.2 1-1.2 1.9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3.2 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.7 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.7-3.8-9S9.5 5.5 12 3Z" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M6 3.5h3l1.5 4-2 1.5a11 11 0 0 0 5.5 5.5l1.5-2 4 1.5v3c0 1.1-1 2-2.1 1.9-6.5-.6-11.6-5.7-12.3-12.2C4.4 5.2 5 4 6 3.5Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-map-pin" viewBox="0 0 24 24"><path d="M12 21.5s7-6.2 7-11.5a7 7 0 1 0-14 0c0 5.3 7 11.5 7 11.5Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.3" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="icon-arrow-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-send" viewBox="0 0 24 24"><path d="M4 12 20 4l-6 16-3-7-7-1Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-refresh" viewBox="0 0 24 24"><path d="M4 4v5h5M20 20v-5h-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M4.5 15A8 8 0 0 0 19 9M19.5 9A8 8 0 0 0 5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></symbol>
+    <symbol id="icon-trend-up" viewBox="0 0 24 24"><path d="M3 17.5 10 10l4 4 7-8M16 6h5v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </svg>
+
+  <!-- ===================== TOP BAR ===================== -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <span><span class="pulse-dot"></span> Atendimento <strong>100% online</strong> para o Brasil e o exterior</span>
+      <a href="https://wa.me/5511999999999?text=Ol%C3%A1%20Maze%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20agendamento." target="_blank" rel="noopener noreferrer" class="top-bar-link">
+        <svg width="13" height="13"><use href="#icon-chat"/></svg> Fale no WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- ===================== HEADER / NAV ===================== -->
+  <header class="header" id="siteHeader">
+    <div class="container nav-wrap">
+      <a href="#inicio" class="brand">
+        <div class="brand-monogram">MG</div>
+        <div class="brand-text">
+          <h2>Maze Gusmão</h2>
+          <span>Terapeuta Sistêmica • Consteladora Multidimensional</span>
+        </div>
+      </a>
+
+      <nav aria-label="Navegação principal">
+        <ul class="nav-links">
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#constelacao">Constelação</a></li>
+          <li><a href="#atendimento">Atendimento</a></li>
+          <li><a href="#areas">Áreas</a></li>
+          <li><a href="#autoavaliacao">Autoavaliação</a></li>
+          <li><a href="#faq">Dúvidas</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://wa.me/5511999999999?text=Ol%C3%A1%20Maze%2C%20gostaria%20de%20tirar%20d%C3%BAvidas%20sobre%20as%20sess%C3%B5es." target="_blank" rel="noopener noreferrer" class="nav-phone-link">
+          <svg width="15" height="15"><use href="#icon-phone"/></svg> Dúvidas?
+        </a>
+        <button type="button" class="btn btn-primary" data-open-modal>
+          <svg width="16" height="16"><use href="#icon-calendar"/></svg> Agendar Sessão
+        </button>
+        <button type="button" class="mobile-toggle" id="mobileToggle" aria-expanded="false" aria-controls="mobileDrawer" aria-label="Abrir menu de navegação">
+          <svg width="24" height="24"><use href="#icon-menu"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer" hidden>
+      <ul class="mobile-drawer-links">
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#constelacao">Constelação</a></li>
+        <li><a href="#atendimento">Atendimento</a></li>
+        <li><a href="#areas">Áreas</a></li>
+        <li><a href="#autoavaliacao">Autoavaliação</a></li>
+        <li><a href="#faq">Dúvidas</a></li>
+      </ul>
+      <div class="mobile-drawer-actions">
+        <button type="button" class="btn btn-primary" data-open-modal style="width:100%;">
+          <svg width="16" height="16"><use href="#icon-calendar"/></svg> Agendar Sessão Agora
+        </button>
+        <a href="https://wa.me/5511999999999?text=Ol%C3%A1%20Maze%2C%20gostaria%20de%20agendar%20uma%20sess%C3%A3o." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp-outline" style="width:100%;">
+          <svg width="16" height="16"><use href="#icon-chat"/></svg> Conversar no WhatsApp
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================== HERO ===================== -->
+    <section id="inicio" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="badge"><svg width="13" height="13"><use href="#icon-sparkles"/></svg> Instituto Nova Era • Constelação Sistêmica Multidimensional</span>
+
+          <h1>Pare de repetir uma história que <span class="text-accent italic">não é sua</span> e volte a viver a sua.</h1>
+
+          <p class="hero-lead">
+            Sou terapeuta sistêmica e consteladora multidimensional. Atuo na raiz do problema, acessando o campo sistêmico, emocional e energético, com condução segura e aplicação direta na vida real.
+          </p>
+
+          <ul class="hero-checklist">
+            <li><svg width="16" height="16"><use href="#icon-check"/></svg><span>Atendimento <strong>online</strong>, com toda eficácia</span></li>
+            <li><svg width="16" height="16"><use href="#icon-check"/></svg><span>Método passo a passo: seguro, profundo e direto</span></li>
+            <li><svg width="16" height="16"><use href="#icon-check"/></svg><span>Condução com ordem, clareza e profundidade</span></li>
+            <li><svg width="16" height="16"><use href="#icon-check"/></svg><span>Sigilo e respeito ao tempo do seu sistema</span></li>
+          </ul>
+
+          <div class="hero-actions">
+            <button type="button" class="btn btn-primary btn-lg" data-open-modal>
+              <svg width="18" height="18"><use href="#icon-calendar"/></svg> Agendar Minha Sessão
+            </button>
+            <a href="https://wa.me/5511999999999?text=Ol%C3%A1%20Maze%2C%20conheci%20seu%20trabalho%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20as%20sess%C3%B5es." target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-lg">
+              <svg width="16" height="16"><use href="#icon-chat"/></svg> Falar Diretamente no WhatsApp
+            </a>
+          </div>
+
+          <div class="hero-reassurance">
+            <span><svg width="15" height="15"><use href="#icon-shield"/></svg> Sem promessas irreais • Sigilo e ética</span>
+            <span><svg width="15" height="15"><use href="#icon-heart"/></svg> Raiz • Verdade • Ordem</span>
+          </div>
+        </div>
+
+        <div class="hero-image-col">
+          <div class="hero-image-card">
+            <img src="assets/images/maze-gusmao.jpg" alt="Maze Gusmão, terapeuta sistêmica e consteladora multidimensional" loading="eager">
+            <div class="hero-image-overlay">
+              <p class="eyebrow"><span class="pulse-dot pulse-dot--light"></span> Instituto Nova Era</p>
+              <h3>Maze Gusmão</h3>
+              <p>Terapeuta Sistêmica • Consteladora Multidimensional</p>
+            </div>
+          </div>
+
+          <div class="hero-quote-chip">
+            <div class="hero-quote-icon"><svg width="16" height="16"><use href="#icon-heart"/></svg></div>
+            <div>
+              <p class="hero-quote-text">&ldquo;Nenhuma dor surge do nada.&rdquo;</p>
+              <p class="hero-quote-sub">Aquilo que se repete na vida carrega uma origem sistêmica.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="stats-bar">
+          <div class="stat"><div class="stat-number">7</div><div class="stat-label">Etapas claras em cada atendimento</div></div>
+          <div class="stat"><div class="stat-number">Online</div><div class="stat-label">Atendimento realizado com toda eficácia</div></div>
+          <div class="stat"><div class="stat-number">Raiz</div><div class="stat-label">Atuação na causa, não só no sintoma</div></div>
+          <div class="stat"><div class="stat-number">100%</div><div class="stat-label">Sigilo e ética profissional</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PARA QUEM É ===================== -->
+    <section class="section pain-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-alt"><svg width="13" height="13"><use href="#icon-alert"/></svg> Para quem é este atendimento</span>
+          <h2>Talvez você esteja carregando algo que <span class="italic text-accent">não é seu</span></h2>
+          <p>Na visão sistêmica, muitas dores que parecem pessoais nasceram em histórias que vieram antes de nós. Se você se reconhece em algum destes pontos, este trabalho é para você.</p>
+        </div>
+
+        <div class="pain-grid">
+          <div class="pain-card">
+            <div class="pain-icon"><svg width="20" height="20"><use href="#icon-refresh"/></svg></div>
+            <h3>Padrões que se repetem</h3>
+            <p>Você percebe as mesmas situações, relações ou dificuldades voltando na sua vida, mesmo quando muda de cenário ou de pessoas.</p>
+            <span class="pain-tag">Pode ser trabalhado em sessão <svg width="13" height="13"><use href="#icon-arrow-right"/></svg></span>
+          </div>
+          <div class="pain-card">
+            <div class="pain-icon"><svg width="20" height="20"><use href="#icon-help"/></svg></div>
+            <h3>Já tentou de tudo e não avançou</h3>
+            <p>Esforço, disciplina, cursos e outros caminhos, mas alguma coisa continua no mesmo lugar e você não sabe explicar o quê.</p>
+            <span class="pain-tag">Pode ser trabalhado em sessão <svg width="13" height="13"><use href="#icon-arrow-right"/></svg></span>
+          </div>
+          <div class="pain-card">
+            <div class="pain-icon"><svg width="20" height="20"><use href="#icon-battery"/></svg></div>
+            <h3>Medo emocional sem explicação clara</h3>
+            <p>Um medo ou um peso que acompanha você e que não tem uma causa evidente na sua própria história.</p>
+            <span class="pain-tag">Pode ser trabalhado em sessão <svg width="13" height="13"><use href="#icon-arrow-right"/></svg></span>
+          </div>
+          <div class="pain-card">
+            <div class="pain-icon"><svg width="20" height="20"><use href="#icon-users"/></svg></div>
+            <h3>Conflitos familiares ou relacionais</h3>
+            <p>Mágoas, distância ou desgaste com pai, mãe, parceiro(a) e outras pessoas importantes do seu sistema.</p>
+            <span class="pain-tag">Pode ser trabalhado em sessão <svg width="13" height="13"><use href="#icon-arrow-right"/></svg></span>
+          </div>
+          <div class="pain-card">
+            <div class="pain-icon"><svg width="20" height="20"><use href="#icon-trend-down"/></svg></div>
+            <h3>Quer prosperar, mas algo sempre trava</h3>
+            <p>O desejo de crescer no dinheiro, no trabalho ou nos negócios esbarra em um bloqueio que se repete.</p>
+            <span class="pain-tag">Pode ser trabalhado em sessão <svg width="13" height="13"><use href="#icon-arrow-right"/></svg></span>
+          </div>
+          <div class="pain-card">
+            <div class="pain-icon"><svg width="20" height="20"><use href="#icon-sparkles"/></svg></div>
+            <h3>Um chamado para mudança profunda</h3>
+            <p>Você sente que chegou a hora de olhar para a raiz e não apenas para os sintomas do dia a dia.</p>
+            <span class="pain-tag">Pode ser trabalhado em sessão <svg width="13" height="13"><use href="#icon-arrow-right"/></svg></span>
+          </div>
+        </div>
+
+        <div class="pain-banner">
+          <div>
+            <h4>Este trabalho é para quem está pronto(a) para uma transformação real.</h4>
+            <p>Não é um atendimento por curiosidade: é um processo com método, condução e respeito ao seu tempo.</p>
+          </div>
+          <button type="button" class="btn btn-cream" data-open-modal>Quero Agendar Minha Sessão <svg width="16" height="16"><use href="#icon-arrow-right"/></svg></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SOBRE ===================== -->
+    <section id="sobre" class="section about-section">
+      <div class="container about-grid">
+        <div class="about-photos">
+          <div class="about-photo-main">
+            <img src="assets/images/constelacao-familiar.jpg" alt="Mesa de constelação sistêmica" loading="lazy">
+            <div class="about-photo-overlay">
+              <span class="eyebrow">Constelação Online</span>
+              <h4>Leitura do campo sistêmico</h4>
+              <p>Condução segura em cada etapa</p>
+            </div>
+          </div>
+          <div class="about-photo-secondary">
+            <img src="assets/images/consultorio.jpg" alt="Espaço de atendimento acolhedor" loading="lazy">
+          </div>
+          <div class="about-badge">
+            <div class="about-badge-icon"><svg width="18" height="18"><use href="#icon-award"/></svg></div>
+            <div>
+              <div class="about-badge-title">Instituto Nova Era</div>
+              <div class="about-badge-sub">Constelação Multidimensional</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-content">
+          <span class="badge badge-alt"><svg width="13" height="13"><use href="#icon-sparkles"/></svg> Quem sou</span>
+
+          <h2>Atuar na raiz, com <span class="italic text-accent">método e condução</span></h2>
+
+          <p>Sou <strong>Maze Gusmão</strong>, terapeuta sistêmica e consteladora multidimensional, formada pelo método de Constelação Sistêmica Multidimensional do <strong>Instituto Nova Era</strong>.</p>
+
+          <p>Minha atuação não se baseia apenas em conceitos, mas em prática terapêutica estruturada: leitura de campo, condução segura, comandos sistêmicos e aplicação direta na vida real. Não realizo atendimentos genéricos. Atuo na raiz do problema, acessando o campo sistêmico, emocional e energético.</p>
+
+          <blockquote class="pull-quote">
+            &ldquo;Não improviso e não faço atendimentos desgastantes. Atendo com ordem, clareza e profundidade.&rdquo;
+            <cite>— Maze Gusmão</cite>
+          </blockquote>
+
+          <div class="pillars-block">
+            <h3>O método Constelação Sistêmica Multidimensional une:</h3>
+            <div class="pillars-grid">
+              <div class="pillar-card">
+                <div class="pillar-icon"><svg width="18" height="18"><use href="#icon-tree"/></svg></div>
+                <div><h4>Constelação familiar</h4><p>A base criada por Bert Hellinger para acessar as dinâmicas ocultas do sistema familiar.</p></div>
+              </div>
+              <div class="pillar-card">
+                <div class="pillar-icon"><svg width="18" height="18"><use href="#icon-globe"/></svg></div>
+                <div><h4>Leitura do campo</h4><p>Leitura do campo sistêmico e vibracional para identificar a origem do bloqueio.</p></div>
+              </div>
+              <div class="pillar-card">
+                <div class="pillar-icon"><svg width="18" height="18"><use href="#icon-heart"/></svg></div>
+                <div><h4>Consciência emocional</h4><p>Consciência emocional e neurociência, aplicadas na prática terapêutica.</p></div>
+              </div>
+              <div class="pillar-card">
+                <div class="pillar-icon"><svg width="18" height="18"><use href="#icon-sun"/></svg></div>
+                <div><h4>Comandos de liberação</h4><p>Comandos de liberação e reorganização do sistema emocional de quem é atendido.</p></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="differential">
+            <p class="differential-lead">Outros métodos apenas explicam. <strong>O método Nova Era conduz e transforma.</strong></p>
+            <h3>O que torna este trabalho diferente</h3>
+            <ul class="differential-list">
+              <li><svg width="16" height="16"><use href="#icon-check"/></svg><span>Tem método e tem condução: não é raso, nem intuição solta.</span></li>
+              <li><svg width="16" height="16"><use href="#icon-check"/></svg><span>Sei abrir e fechar o campo, identificar a causa e como intervir.</span></li>
+              <li><svg width="16" height="16"><use href="#icon-check"/></svg><span>Oriento você depois da sessão, para a mudança seguir na vida real.</span></li>
+              <li><svg width="16" height="16"><use href="#icon-check"/></svg><span>Não improviso e não faço atendimentos desgastantes: atendo com ordem, clareza e profundidade.</span></li>
+            </ul>
+          </div>
+
+          <div class="about-cta">
+            <button type="button" class="btn btn-primary" data-open-modal>Agendar Minha Sessão <svg width="16" height="16"><use href="#icon-arrow-right"/></svg></button>
+            <a href="#atendimento" class="link-arrow">Ver como é o atendimento ↓</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== A CONSTELAÇÃO (EDUCATIVO) ===================== -->
+    <section id="constelacao" class="section constellation-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge"><svg width="13" height="13"><use href="#icon-sparkles"/></svg> Entenda a Constelação Familiar</span>
+          <h2>O que é constelação familiar e como ela <span class="italic text-accent">funciona na prática?</span></h2>
+          <p>Criada por Bert Hellinger, a constelação familiar permite acessar e reorganizar dinâmicas ocultas do sistema familiar que influenciam a vida de uma pessoa, mesmo quando ela não tem consciência disso. Seu princípio: nenhuma dor surge do nada.</p>
+        </div>
+
+        <div class="concept-grid">
+          <article class="concept-card">
+            <div class="concept-icon"><svg width="20" height="20"><use href="#icon-users"/></svg></div>
+            <h3>O que é um sistema familiar?</h3>
+            <p>É formado por todas as pessoas ligadas à sua linhagem de vida: pais, avós e bisavós, irmãos (inclusive abortos, natimortos e pessoas excluídas), ex-parceiros importantes e quem esteja ligado por destino, perdas, traumas, dívidas e segredos.</p>
+            <p>Funciona como um campo de informações onde ficam registradas dores não resolvidas, exclusões e culpas. Mesmo sem saber, os descendentes podem carregar essas informações e expressá-las como dificuldades nas relações, bloqueios financeiros, sensação de não pertencimento, medo, culpa, autossabotagem ou repetição de histórias de antepassados.</p>
+          </article>
+
+          <article class="concept-card">
+            <div class="concept-icon"><svg width="20" height="20"><use href="#icon-refresh"/></svg></div>
+            <h3>O que é um emaranhamento sistêmico?</h3>
+            <p>Acontece quando alguém está ligado, sem perceber, ao destino, à dor ou à emoção de outro membro do sistema. Isso se dá por amor cego, lealdade invisível, culpa inconsciente ou tentativa de pertencimento.</p>
+            <p class="concept-highlight">A pessoa não vive a própria vida: vive uma história que não é dela.</p>
+          </article>
+        </div>
+
+        <div class="laws-block">
+          <h3 class="block-title">As 3 leis sistêmicas: as leis do amor</h3>
+          <p class="block-intro">Bert Hellinger identificou que todo sistema familiar é regido por leis naturais. Quando elas são violadas, surgem os conflitos.</p>
+
+          <div class="laws-grid">
+            <article class="law-card">
+              <span class="law-number">1</span>
+              <h4>Pertencimento</h4>
+              <p>Todos que fazem parte do sistema têm direito de pertencer. Quando alguém é excluído por julgamento, rejeição, esquecimento ou vergonha, outro membro pode representar essa exclusão, sem perceber, por meio da dor.</p>
+              <p class="law-example"><strong>Exemplo:</strong> uma mulher que nunca conheceu o avô excluído pode repetir destinos de fracasso e solidão ligados a ele.</p>
+            </article>
+            <article class="law-card">
+              <span class="law-number">2</span>
+              <h4>Ordem</h4>
+              <p>Quem veio antes tem precedência sobre quem veio depois. Quando os filhos ocupam o lugar dos pais, emocional ou energeticamente, surge desequilíbrio.</p>
+              <p class="law-example"><strong>Exemplo:</strong> filhos que cuidam emocionalmente dos pais tendem a ter dificuldade para prosperar ou se relacionar.</p>
+            </article>
+            <article class="law-card">
+              <span class="law-number">3</span>
+              <h4>Equilíbrio</h4>
+              <p>Toda relação precisa de troca equilibrada entre dar e receber. Quando há excesso de culpa, sacrifício ou dívida emocional, o sistema tenta compensar.</p>
+              <p class="law-example"><strong>Exemplo:</strong> uma pessoa que se pune inconscientemente pode estar tentando pagar algo do sistema.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="practice-block">
+          <div class="practice-copy">
+            <h3>Como a constelação funciona na prática</h3>
+            <p>A constelação acontece pelo acesso ao campo sistêmico, também chamado de campo de informação. Não se trata de analisar mentalmente, mas de ver o que está oculto e restaurar o fluxo do amor.</p>
+            <ol class="practice-steps">
+              <li>Um tema é trazido, por exemplo relacionamento, dinheiro ou saúde emocional.</li>
+              <li>O campo do sistema é acessado.</li>
+              <li>As dinâmicas ocultas começam a se revelar.</li>
+              <li>A terapeuta identifica exclusões, inversões, emaranhamentos e desequilíbrios.</li>
+              <li>São feitos movimentos de reconhecimento e reorganização.</li>
+              <li>O sistema encontra uma nova ordem.</li>
+            </ol>
+          </div>
+
+          <div class="practice-side">
+            <div class="note-card">
+              <h4>Por que funciona?</h4>
+              <p>Porque atua na causa. Enquanto outras abordagens tentam mudar comportamentos, a constelação atua no nível em que o padrão se formou. Quando a informação correta é reconhecida, o sistema se reorganiza, a repetição perde força e o sintoma deixa de ser necessário.</p>
+            </div>
+            <div class="note-card">
+              <h4>O papel da terapeuta</h4>
+              <p>Não julga, não força, não interfere com a própria história e não salva o cliente. Conduz o campo com respeito e permite que o sistema encontre a própria ordem.</p>
+            </div>
+            <div class="note-card">
+              <h4>O que costuma acontecer depois</h4>
+              <p>É comum haver alívio emocional, clareza, sensação de paz, mudança de percepção e desbloqueios graduais. Cada sistema tem seu tempo: a constelação planta uma informação correta e o sistema responde a partir dela.</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="constellation-closing">Constelação não é adivinhação, religião, magia nem promessa milagrosa. É consciência aplicada ao sistema familiar e, quando o sistema encontra ordem, a vida flui.</p>
+      </div>
+    </section>
+
+    <!-- ===================== ATENDIMENTO (7 ETAPAS) ===================== -->
+    <section id="atendimento" class="section process-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-alt">Como é o atendimento</span>
+          <h2>Uma estrutura clara, do primeiro contato ao <span class="italic text-accent">fechamento do campo</span></h2>
+          <p>Cada sessão segue uma estrutura definida, respeitando o tempo, o campo e o sistema de quem é atendido. O atendimento é realizado online, com toda eficácia.</p>
+        </div>
+
+        <div class="process-grid">
+          <div class="process-card">
+            <div class="process-top"><div class="process-icon"><svg width="20" height="20"><use href="#icon-help"/></svg></div><span class="process-step">01</span></div>
+            <h3>Entender o motivo</h3>
+            <p>Começamos entendendo o que traz você para a sessão e qual tema deseja olhar.</p>
+            <span class="process-footer">Etapa 1 de 7</span>
+          </div>
+          <div class="process-card">
+            <div class="process-top"><div class="process-icon"><svg width="20" height="20"><use href="#icon-globe"/></svg></div><span class="process-step">02</span></div>
+            <h3>Abertura do campo sistêmico</h3>
+            <p>Abrimos o campo para acessar as informações do seu sistema com segurança.</p>
+            <span class="process-footer">Etapa 2 de 7</span>
+          </div>
+          <div class="process-card">
+            <div class="process-top"><div class="process-icon"><svg width="20" height="20"><use href="#icon-sun"/></svg></div><span class="process-step">03</span></div>
+            <h3>Leitura da origem do bloqueio</h3>
+            <p>Lemos o campo para chegar à origem do bloqueio, e não apenas aos seus efeitos.</p>
+            <span class="process-footer">Etapa 3 de 7</span>
+          </div>
+          <div class="process-card">
+            <div class="process-top"><div class="process-icon"><svg width="20" height="20"><use href="#icon-alert"/></svg></div><span class="process-step">04</span></div>
+            <h3>Identificação do padrão oculto</h3>
+            <p>Identificamos o padrão por trás da repetição: familiar, emocional ou energético.</p>
+            <span class="process-footer">Etapa 4 de 7</span>
+          </div>
+          <div class="process-card">
+            <div class="process-top"><div class="process-icon"><svg width="20" height="20"><use href="#icon-chat"/></svg></div><span class="process-step">05</span></div>
+            <h3>Frases, comandos e movimentos</h3>
+            <p>Aplicamos frases, comandos e movimentos sistêmicos de reconhecimento e liberação.</p>
+            <span class="process-footer">Etapa 5 de 7</span>
+          </div>
+          <div class="process-card">
+            <div class="process-top"><div class="process-icon"><svg width="20" height="20"><use href="#icon-refresh"/></svg></div><span class="process-step">06</span></div>
+            <h3>Reorganização do sistema</h3>
+            <p>O sistema é reorganizado para que cada um volte ao seu lugar, com ordem.</p>
+            <span class="process-footer">Etapa 6 de 7</span>
+          </div>
+          <div class="process-card">
+            <div class="process-top"><div class="process-icon"><svg width="20" height="20"><use href="#icon-check-circle"/></svg></div><span class="process-step">07</span></div>
+            <h3>Fechamento com integração</h3>
+            <p>Fechamos o campo com integração e orientamos você sobre como seguir depois da sessão.</p>
+            <span class="process-footer">Etapa 7 de 7</span>
+          </div>
+          <div class="process-card process-card--cta">
+            <div>
+              <h3>Pronto(a) para começar?</h3>
+              <p>Solicite seu horário e conte brevemente o tema que você quer trazer.</p>
+            </div>
+            <button type="button" class="btn btn-cream" data-open-modal>Agendar Minha Sessão <svg width="16" height="16"><use href="#icon-arrow-right"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ÁREAS DE ATUAÇÃO ===================== -->
+    <section id="areas" class="section services-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge"><svg width="13" height="13"><use href="#icon-sparkles"/></svg> Áreas de atuação</span>
+          <h2>Áreas da vida onde há <span class="italic text-accent">repetição, dor ou bloqueio</span></h2>
+          <p>Atuo nas principais áreas em que o padrão se repete, sempre buscando a raiz e não apenas o sintoma.</p>
+        </div>
+
+        <div class="services-grid" id="servicesGrid">
+          <!-- Cards gerados por JS a partir de SERVICES (js/main.js) -->
+        </div>
+
+        <p class="areas-note">A constelação sistêmica é uma abordagem complementar e não substitui acompanhamento médico ou psicológico.</p>
+
+        <div class="online-info-box">
+          <div>
+            <span class="eyebrow-pill">Atendimento online</span>
+            <h3>Onde você estiver, o atendimento chega até você.</h3>
+            <p>As sessões são realizadas online, com toda eficácia, para pessoas no Brasil e no exterior, seguindo a mesma estrutura de condução em cada etapa.</p>
+          </div>
+          <a href="https://wa.me/5511999999999?text=Ol%C3%A1%20Maze%2C%20gostaria%20de%20saber%20como%20funciona%20o%20atendimento%20online." target="_blank" rel="noopener noreferrer" class="btn btn-sage">Tirar Dúvidas Sobre o Online <svg width="16" height="16"><use href="#icon-arrow-right"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== AUTOAVALIAÇÃO (QUIZ) ===================== -->
+    <section id="autoavaliacao" class="section quiz-section">
+      <div class="container container-narrow">
+        <div class="section-header">
+          <span class="badge badge-alt"><svg width="13" height="13"><use href="#icon-help"/></svg> Guia rápido</span>
+          <h2>Por onde começar? Descubra qual área <span class="italic text-accent">pede atenção agora</span></h2>
+          <p>Em 3 cliques, receba uma orientação preliminar sobre o tema que você pode trazer para a sessão.</p>
+        </div>
+
+        <div class="quiz-box" id="quizBox">
+          <div class="quiz-progress">
+            <div class="quiz-progress-labels">
+              <span id="quizStepLabel">Etapa 1 de 3</span>
+              <span id="quizPercentLabel">0%</span>
+            </div>
+            <div class="quiz-progress-track"><div class="quiz-progress-fill" id="quizProgressFill"></div></div>
+          </div>
+          <div id="quizContent"><!-- gerado por JS --></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== VALORES E ÉTICA ===================== -->
+    <section id="etica" class="section ethics-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-alt"><svg width="13" height="13"><use href="#icon-shield"/></svg> Valores e ética</span>
+          <h2>Compromisso com <span class="italic text-accent">responsabilidade e consciência</span></h2>
+          <p>A forma como atendo é tão importante quanto o método que utilizo.</p>
+        </div>
+
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon"><svg width="20" height="20"><use href="#icon-check-circle"/></svg></div>
+            <h3>Sem promessas milagrosas</h3>
+            <p>Não prometo cura milagrosa. Falo de campo, raiz, sistema, verdade, desbloqueio e ordem, com linguagem clara e sem termos confusos.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon"><svg width="20" height="20"><use href="#icon-heart"/></svg></div>
+            <h3>Complementar ao cuidado médico e psicológico</h3>
+            <p>A constelação não substitui acompanhamento médico ou psicológico. Quando ele for necessário, ele deve continuar.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon"><svg width="20" height="20"><use href="#icon-shield"/></svg></div>
+            <h3>Sigilo</h3>
+            <p>Não exponho histórias de clientes. O que é trazido para a sessão permanece na sessão.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon"><svg width="20" height="20"><use href="#icon-clock"/></svg></div>
+            <h3>Respeito ao tempo do sistema</h3>
+            <p>Cada sistema tem seu tempo. Conduzo com ordem e sem pressa, e não faço atendimentos desgastantes.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon"><svg width="20" height="20"><use href="#icon-award"/></svg></div>
+            <h3>Responsabilidade e consciência</h3>
+            <p>Atendo com responsabilidade, alinhada ao método, à ética e à visão do Instituto Nova Era.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon"><svg width="20" height="20"><use href="#icon-sparkles"/></svg></div>
+            <h3>Transformação real</h3>
+            <p>Atendo quem está pronto(a) para olhar para a raiz, e não quem busca apenas curiosidade.</p>
+          </div>
+        </div>
+
+        <div class="ethics-declaration">
+          <p>Sou parte do Instituto Nova Era e atuo alinhada ao método, à ética e à visão do instituto. Minha prática representa uma forma de fazer terapia mais consciente, mais profunda e mais responsável.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FAQ ===================== -->
+    <section id="faq" class="section faq-section">
+      <div class="container container-narrow">
+        <div class="section-header">
+          <span class="badge badge-alt">Dúvidas frequentes</span>
+          <h2>Tudo o que você precisa saber antes de agendar</h2>
+          <p>Clareza para que você se sinta seguro(a) em dar esse passo.</p>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item open">
+            <button type="button" class="faq-question" aria-expanded="true">
+              <span>O que é constelação familiar e como ela funciona na prática?</span>
+              <span class="faq-icon"><svg width="16" height="16"><use href="#icon-chevron-down"/></svg></span>
+            </button>
+            <div class="faq-answer"><p>A constelação familiar é uma abordagem terapêutica criada por Bert Hellinger. Ela permite acessar e reorganizar dinâmicas ocultas do sistema familiar que influenciam a vida de uma pessoa. Um tema é trazido, o campo do sistema é acessado, as dinâmicas ocultas se revelam e são feitos movimentos de reconhecimento e reorganização, até que o sistema encontre uma nova ordem.</p></div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>A constelação tem ligação com religião ou magia?</span>
+              <span class="faq-icon"><svg width="16" height="16"><use href="#icon-chevron-down"/></svg></span>
+            </button>
+            <div class="faq-answer"><p>Não. Constelação não é adivinhação, religião, magia nem promessa milagrosa. É consciência aplicada ao sistema familiar.</p></div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>Como funciona o atendimento online?</span>
+              <span class="faq-icon"><svg width="16" height="16"><use href="#icon-chevron-down"/></svg></span>
+            </button>
+            <div class="faq-answer"><p>O atendimento é realizado online, com toda eficácia, e segue a mesma estrutura em todas as sessões: entendimento do motivo, abertura do campo, leitura da origem do bloqueio, identificação do padrão, aplicação de frases e comandos, reorganização do sistema e fechamento com integração.</p></div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>Quantas sessões são necessárias?</span>
+              <span class="faq-icon"><svg width="16" height="16"><use href="#icon-chevron-down"/></svg></span>
+            </button>
+            <div class="faq-answer"><p>Cada sistema tem seu tempo. A constelação planta uma informação correta e o sistema responde a partir dela. Ao final da sessão você recebe orientação sobre como seguir, e a necessidade de novos atendimentos é conversada com você.</p></div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>A constelação substitui acompanhamento médico ou psicológico?</span>
+              <span class="faq-icon"><svg width="16" height="16"><use href="#icon-chevron-down"/></svg></span>
+            </button>
+            <div class="faq-answer"><p>Não. Ela é uma abordagem complementar de autoconhecimento. Não prometo cura milagrosa e não substituo acompanhamento médico ou psicológico.</p></div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>Como agendar uma sessão?</span>
+              <span class="faq-icon"><svg width="16" height="16"><use href="#icon-chevron-down"/></svg></span>
+            </button>
+            <div class="faq-answer"><p>Você pode solicitar o horário pelo formulário desta página ou pelo WhatsApp. Depois do contato, alinhamos o melhor dia e horário para a sua sessão.</p></div>
+          </div>
+        </div>
+
+        <div class="faq-callout">
+          <div>
+            <h4>Ficou com alguma dúvida específica?</h4>
+            <p>Fale com a Maze pelo WhatsApp.</p>
+          </div>
+          <a href="https://wa.me/5511999999999?text=Ol%C3%A1%20Maze%2C%20li%20o%20site%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida%20antes%20de%20agendar." target="_blank" rel="noopener noreferrer" class="btn btn-sage-dark">
+            <svg width="15" height="15"><use href="#icon-chat"/></svg> Tirar Dúvida no WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== AGENDAMENTO ===================== -->
+    <section id="agendar" class="section booking-section">
+      <div class="container container-narrow">
+        <div class="section-header">
+          <span class="badge badge-alt">Agendamento Humanizado</span>
+          <h2>Dê o primeiro passo para a sua transformação</h2>
+          <p>Preencha os campos abaixo para solicitar seu horário com Maze Gusmão. O atendimento é realizado online.</p>
+        </div>
+
+        <div class="form-box">
+          <form id="bookingForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="formName" class="form-label">Nome Completo *</label>
+                <input type="text" id="formName" name="name" class="form-control" required placeholder="Como prefere ser chamado(a)?">
+              </div>
+              <div class="form-group">
+                <label for="formPhone" class="form-label">WhatsApp (com DDD) *</label>
+                <input type="tel" id="formPhone" name="whatsapp" class="form-control" required placeholder="(11) 99999-9999">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="formService" class="form-label">Tema que você quer trazer</label>
+              <select id="formService" name="service" class="form-control"></select>
+            </div>
+
+            <div class="form-group">
+              <span class="form-label">Qual o melhor turno para você ser atendido(a)?</span>
+              <div class="toggle-group toggle-group--4" data-toggle-group="bestTime">
+                <button type="button" class="toggle-btn" data-value="manha">Manhã</button>
+                <button type="button" class="toggle-btn is-active" data-value="tarde">Tarde</button>
+                <button type="button" class="toggle-btn" data-value="noite">Noite</button>
+                <button type="button" class="toggle-btn" data-value="qualquer">Qualquer horário</button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="formMessage" class="form-label">Gostaria de adiantar brevemente sua queixa ou objetivo? (Opcional)</label>
+              <textarea id="formMessage" name="situation" rows="3" class="form-control" placeholder="Ex: Gostaria de constelar um padrão de relacionamentos difíceis ou desbloquear minha vida profissional..."></textarea>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary btn-lg" id="bookingSubmitBtn">
+                <svg width="16" height="16"><use href="#icon-send"/></svg> Confirmar Pré-Agendamento no Site
+              </button>
+              <button type="button" class="btn btn-sage-dark btn-lg" id="bookingWhatsAppBtn">
+                <svg width="16" height="16"><use href="#icon-chat"/></svg> Enviar Direto no WhatsApp
+              </button>
+            </div>
+
+            <p class="form-disclaimer"><svg width="14" height="14"><use href="#icon-shield"/></svg> Seus dados são confidenciais e protegidos pela ética profissional terapêutica.</p>
+          </form>
+
+          <div id="bookingSuccess" class="booking-success" hidden>
+            <div class="booking-success-icon"><svg width="30" height="30"><use href="#icon-check-circle"/></svg></div>
+            <h3>Solicitação Recebida com Sucesso!</h3>
+            <p>Muito obrigada, <strong id="successName"></strong>. Recebemos seu interesse para <strong id="successService"></strong>.</p>
+            <p class="booking-success-sub">Entraremos em contato pelo WhatsApp <strong id="successPhone"></strong> para confirmar as datas disponíveis.</p>
+            <div class="booking-success-actions">
+              <button type="button" class="btn btn-sage-dark" id="successWhatsAppBtn"><svg width="16" height="16"><use href="#icon-chat"/></svg> Agilizar no WhatsApp Agora</button>
+              <button type="button" class="btn btn-ghost" id="successResetBtn">Enviar Outra Mensagem</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-monogram">MG</div>
+          <div>
+            <span class="footer-name">Maze Gusmão</span>
+            <span class="footer-role">Terapeuta Sistêmica • Instituto Nova Era</span>
+          </div>
+        </div>
+        <p class="footer-mantra">&ldquo;Quando o sistema encontra ordem, a vida flui.&rdquo;</p>
+        <span class="footer-method-badge"><svg width="14" height="14"><use href="#icon-sparkles"/></svg> Constelação Sistêmica Multidimensional</span>
+      </div>
+
+      <div class="footer-links">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#constelacao">Constelação</a></li>
+          <li><a href="#atendimento">Atendimento</a></li>
+          <li><a href="#areas">Áreas</a></li>
+          <li><a href="#autoavaliacao">Autoavaliação</a></li>
+          <li><a href="#faq">Dúvidas</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Contato &amp; Agendamento</h4>
+        <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer"><svg width="16" height="16"><use href="#icon-phone"/></svg> WhatsApp: (11) 99999-9999</a>
+        <span class="footer-address"><svg width="16" height="16"><use href="#icon-map-pin"/></svg> Atendimento online para o Brasil e o exterior.</span>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div class="footer-legal">
+        <p>© <span id="footerYear"></span> Maze Gusmão • Instituto Nova Era. Todos os direitos reservados.</p>
+        <p class="footer-ethics">Nota ética: a constelação sistêmica é uma abordagem complementar de autoconhecimento e não substitui acompanhamento médico ou psicológico. Não são feitas promessas de cura milagrosa e as histórias de clientes não são expostas.</p>
+      </div>
+      <button type="button" class="back-to-top" id="backToTop">Voltar ao topo <svg width="14" height="14"><use href="#icon-arrow-up"/></svg></button>
+    </div>
+  </footer>
+
+  <!-- ===================== WHATSAPP FLUTUANTE ===================== -->
+  <aside class="floating-whatsapp-wrap" aria-label="Atendimento rápido pelo WhatsApp">
+    <span class="floating-tooltip">Agende pelo WhatsApp</span>
+    <a href="https://wa.me/5511999999999?text=Ol%C3%A1%20Maze%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20as%20sess%C3%B5es%20de%20Constela%C3%A7%C3%A3o%20e%20Terapia%20Sist%C3%AAmica." target="_blank" rel="noopener noreferrer" class="floating-whatsapp" aria-label="Falar com Maze Gusmão no WhatsApp">
+      <svg viewBox="0 0 24 24" width="28" height="28"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/></svg>
+      <span class="floating-ping"></span>
+    </a>
+  </aside>
+
+  <!-- ===================== MODAL DE AGENDAMENTO RÁPIDO ===================== -->
+  <div class="modal-overlay" id="bookingModal" hidden>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button type="button" class="modal-close" id="modalCloseBtn" aria-label="Fechar janela">
+        <svg width="18" height="18"><use href="#icon-close"/></svg>
+      </button>
+
+      <div id="modalFormWrap">
+        <span class="eyebrow-pill">Agendamento Rápido</span>
+        <h3 id="modalTitle">Reserve Sua Sessão com Maze Gusmão</h3>
+        <p class="modal-sub">Atendimento online, com sigilo e condução segura.</p>
+
+        <form id="modalForm">
+          <div class="form-group">
+            <label for="modalName" class="form-label">Seu Nome Completo *</label>
+            <input type="text" id="modalName" class="form-control" required placeholder="Seu nome">
+          </div>
+          <div class="form-group">
+            <label for="modalPhone" class="form-label">Seu WhatsApp (com DDD) *</label>
+            <input type="tel" id="modalPhone" class="form-control" required placeholder="(11) 99999-9999">
+          </div>
+          <div class="form-group">
+            <label for="modalService" class="form-label">Tema da sessão</label>
+            <select id="modalService" class="form-control"></select>
+          </div>
+
+          <div class="modal-actions">
+            <button type="submit" class="btn btn-primary" style="width:100%;"><svg width="16" height="16"><use href="#icon-calendar"/></svg> Enviar Solicitação de Horário</button>
+            <button type="button" class="btn btn-sage-dark" style="width:100%;" id="modalWhatsAppBtn"><svg width="16" height="16"><use href="#icon-chat"/></svg> Chamar no WhatsApp Imediatamente</button>
+          </div>
+          <p class="form-disclaimer"><svg width="13" height="13"><use href="#icon-shield"/></svg> Atendimento com sigilo e ética profissional.</p>
+        </form>
+      </div>
+
+      <div id="modalSuccessWrap" class="booking-success" hidden>
+        <div class="booking-success-icon"><svg width="28" height="28"><use href="#icon-check-circle"/></svg></div>
+        <h3>Solicitação Enviada!</h3>
+        <p>Obrigada pelo contato, <strong id="modalSuccessName"></strong>. Entraremos em contato pelo WhatsApp <strong id="modalSuccessPhone"></strong> para confirmar seu horário.</p>
+        <div class="booking-success-actions">
+          <button type="button" class="btn btn-sage-dark" style="width:100%;" id="modalSuccessWhatsAppBtn"><svg width="16" height="16"><use href="#icon-chat"/></svg> Conversar no WhatsApp Agora</button>
+          <button type="button" class="btn btn-ghost" id="modalSuccessCloseBtn">Fechar Janela</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
