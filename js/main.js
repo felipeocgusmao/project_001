@@ -8,7 +8,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  const WHATSAPP_NUMBER = '5511999999999'; // <-- PLACEHOLDER: trocar antes de publicar
+  const WHATSAPP_NUMBER = '5518997374014'; // <-- PLACEHOLDER: trocar antes de publicar
 
   const buildWhatsAppUrl = (message) =>
     `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
