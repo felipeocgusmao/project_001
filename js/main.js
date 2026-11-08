@@ -2,13 +2,13 @@
  * Maze Gusmão — Terapeuta Sistêmica & Consteladora Multidimensional
  * Instituto Nova Era — JavaScript puro (sem dependências)
  *
- * IMPORTANTE: WHATSAPP_NUMBER está com um número placeholder.
- * Troque pelo número real antes de publicar o site em produção.
+ * Para trocar o número de WhatsApp, altere WHATSAPP_NUMBER abaixo
+ * e também os links wa.me e o texto do rodapé em index.html.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  const WHATSAPP_NUMBER = '5518997374014'; // <-- PLACEHOLDER: trocar antes de publicar
+  const WHATSAPP_NUMBER = '5518997374014'; // código do país + DDD + número, sem espaços
 
   const buildWhatsAppUrl = (message) =>
     `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
